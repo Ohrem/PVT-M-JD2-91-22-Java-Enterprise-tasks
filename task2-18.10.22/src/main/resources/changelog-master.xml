@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="1" author="ohrem25032002@gmail.com">
+        <sql>
+            create database if not exists expenses_repository;
+        </sql>
+    </changeSet>
+<!-- for task 4 and 5 -->
+    <changeSet id="2" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `expenses_repository`.`expenses`
+            (
+                `ticket_id`    INT           NOT NULL,
+                `costs_amount` DECIMAL(5, 2) NOT NULL,
+                PRIMARY KEY (`ticket_id`)
+            );
+        </sql>
+    </changeSet>
+<!-- for task 6 -->
+    <changeSet id="3" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `expenses_repository`.`receiver`
+            (
+                `id_user` int(10)     NOT NULL AUTO_INCREMENT,
+                `name`    varchar(20) NOT NULL,
+                `email`   varchar(50) NOT NULL,
+                PRIMARY KEY (`id_user`)
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="4" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `expenses_repository`.`payment_ticket`
+            (
+                `id_payment_ticket` int           NOT NULL AUTO_INCREMENT,
+                `payment_amount`    decimal(5, 3) NOT NULL,
+                `id_client`         int(10)       NOT NULL,
+                `pay_date`          date          NOT NULL,
+                PRIMARY KEY (`id_payment_ticket`),
+                FOREIGN KEY (`id_client`) REFERENCES `receiver` (`id_user`)
+                    ON DELETE CASCADE
+                    ON UPDATE CASCADE
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="5" author="ohrem25032002@gmail.com">
+        <sql>
+            INSERT INTO receiver (name, email)
+            VALUES ('Roman Ohremchuk', 'ohrem25032002@gmail.com'),
+                   ('Egor Ohremchuk', 'milik10@mail.ru'),
+                   ('Vladimir', 'zanderKiller@gmail.com');
+        </sql>
+    </changeSet>
+    <changeSet id="6" author="ohrem25032002@gmail.com">
+        <sql>
+            INSERT INTO payment_ticket (payment_amount, id_client, pay_date)
+            VALUES ('78.32', '1', '2022-10-20'),
+                   ('90.21', '2', '2022-10-21'),
+                   ('14.19', '3', '2022-10-22'),
+                   ('13.32', '1', '2022-10-23'),
+                   ('99.94', '2', '2022-10-23');
+        </sql>
+    </changeSet>
+</databaseChangeLog>
