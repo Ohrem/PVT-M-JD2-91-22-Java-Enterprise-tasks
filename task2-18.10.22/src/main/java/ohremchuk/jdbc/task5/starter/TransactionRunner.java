@@ -8,7 +8,6 @@ public class TransactionRunner {
     public static void main(String[] args) throws SQLException {
         //findByIDTest();
         //deleteByIdTest();
-
         //    outlayImp.deleteTicketById(3L);
     }
 
@@ -23,8 +22,5 @@ public class TransactionRunner {
         var result = outlayImp.getExpensesTicketById(ticket_id);
         System.out.println(result);
     }
-
-
-
 
 }

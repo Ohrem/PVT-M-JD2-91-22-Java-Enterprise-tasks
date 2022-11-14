@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="7" author="ohrem25032002@gmail.com">
+        <sql>
+            create database if not exists expenses_repository;
+        </sql>
+    </changeSet>
+    <changeSet id="8" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `expenses_repository`.`users`
+            (
+                `id`         BIGINT PRIMARY KEY,
+                `user_email` VARCHAR(128) UNIQUE,
+                `firstname`  VARCHAR(128) UNIQUE,
+                `lastname`   VARCHAR(128) UNIQUE,
+                `birth_date` DATE,
+                `role`       VARCHAR(32)
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="9" author="ohrem25032002@gmail.com">
+        <sql>
+            INSERT INTO users (id, user_email, firstname, lastname, birth_date, role)
+            VALUES (10, 'ohrem@mail.ru', 'Romka', 'TableTennisPlayer', '2022-10-20', 'ADMIN'),
+                   (11, 'sania78@mail.ru', 'Alex', 'Impress', '2022-11-20', 'USER'),
+                   (12, 'gena23@mail.ru', 'Gena', 'Genious', '2022-12-10', 'USER'),
+                   (13, 'egorMilik@gmail.com', 'Egorka', 'Peela', '2021-09-11', 'DEVELOPER'),
+                   (14, 'Anton@mail.ru', 'Antosha', 'stepup', '2018-03-14', 'TROLLER');
+        </sql>
+    </changeSet>
+    <changeSet id="10" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TRIGGER aft_insert BEFORE INSERT
+                ON users FOR EACH ROW
+                SET new.role = 'MODERATOR';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

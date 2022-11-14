@@ -10,15 +10,15 @@ import java.util.List;
 public class DaoTicketRunner {
     public static void main(String[] args) {
 //        saveTest();
-//        filterTest();
-//        findAllRecordsTest();
+      filterTest();
+//       findAllRecordsTest();
 //        updateTicketTest();
-        deleteTicketTest(16);
+//        deleteTicketTest(16);
 
     }
 
     private static void filterTest() {
-        var ticketFilter = new TicketFilter(10, 0, 32.05, "2022-10-23");
+        var ticketFilter = new TicketFilter(5, 1, 70.05);
         List<Ticket> tickets = TicketDao.getInstance().findAll(ticketFilter);
         System.out.println(tickets);
     }

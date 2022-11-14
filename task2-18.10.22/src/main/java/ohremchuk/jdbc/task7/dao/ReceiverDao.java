@@ -109,6 +109,7 @@ public class ReceiverDao implements BaseDao<Receiver> {
             preparedStatement.setString(1, receiver.getName());
             preparedStatement.setString(2, receiver.getEmail());
             preparedStatement.setInt(3, receiver.getUserId());
+
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throw new DaoException(throwables);
