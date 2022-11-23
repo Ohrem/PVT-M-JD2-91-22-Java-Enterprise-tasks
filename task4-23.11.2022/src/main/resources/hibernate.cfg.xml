@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hierarchy_test?createDatabaseIfNotExist=true&amp;serverTimezone=UTC</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">1111</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">10</property>
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+<!--        <property name="hibernate.hibernate.hbm2ddl.auto">update</property>-->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <mapping class="my.ohremchuk.task6.entity.Car"/>
+        <mapping class="my.ohremchuk.task6.entity.AddressBook"/>
+        <mapping class="my.ohremchuk.task7.entity.Company"/>
+        <mapping class="my.ohremchuk.task7.entity.User"/>
+
+        <mapping class="my.ohremchuk.task8.pojo.single_table.Human"/>
+        <mapping class="my.ohremchuk.task8.pojo.single_table.Customer"/>
+        <mapping class="my.ohremchuk.task8.pojo.single_table.Client"/>
+
+        <mapping class="my.ohremchuk.task8.pojo.table_perClass.Animal"/>
+        <mapping class="my.ohremchuk.task8.pojo.table_perClass.HomePet"/>
+        <mapping class="my.ohremchuk.task8.pojo.table_perClass.WildPet"/>
+
+        <mapping class="my.ohremchuk.task8.pojo.table_perSubclass.Employee"/>
+        <mapping class="my.ohremchuk.task8.pojo.table_perSubclass.ContractEmployee"/>
+        <mapping class="my.ohremchuk.task8.pojo.table_perSubclass.RegularEmployee"/>
+
+
+
+
+
+
+
+    </session-factory>
+</hibernate-configuration>
+

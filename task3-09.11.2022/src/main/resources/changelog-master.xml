@@ -34,7 +34,7 @@
     </changeSet>
     <changeSet id="10" author="ohrem25032002@gmail.com">
         <sql>
-            CREATE TRIGGER aft_insert BEFORE INSERT
+            CREATE TRIGGER bfr_insert BEFORE INSERT
                 ON users FOR EACH ROW
                 SET new.role = 'MODERATOR';
         </sql>

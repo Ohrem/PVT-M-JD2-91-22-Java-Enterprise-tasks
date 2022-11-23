@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="11" author="ohrem25032002@gmail.com">
+        <sql>
+            create database if not exists hierarchy_test;
+        </sql>
+    </changeSet>
+    <changeSet id="12" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `hierarchy_test`.`car`
+            (
+                `id`         BIGINT PRIMARY KEY,
+                `brand`      VARCHAR(128) NOT NULL,
+                `model`      VARCHAR(128) NOT NULL,
+                `sale_price` DECIMAL      NOT NULL
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="13" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `hierarchy_test`.`address_book`
+            (
+                `id`             BIGINT PRIMARY KEY,
+                `name`           VARCHAR(128) NOT NULL,
+                `phone_number`   VARCHAR(128) NOT NULL,
+                `street_address` VARCHAR(128) NOT NULL,
+                `city`           VARCHAR(128) NOT NULL
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="14" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `hierarchy_test`.`t_book_seq`
+            (
+                next_val INTEGER UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+            );
+            INSERT INTO t_book_seq
+            VALUES (55);
+        </sql>
+    </changeSet>
+
+    <changeSet id="15" author="ohrem25032002@gmail.com">
+        <sql>
+            INSERT INTO car (id, brand, model, sale_price)
+            VALUES (1, 'Audi', 'RS6', '2112.21'),
+                   (2, 'RangeRover', 'Velar', '7190.51'),
+                   (3, 'BMW', 'M8', '451333.11'),
+                   (4, 'Mercedes', 'glc', '433.232'),
+                   (5, 'Kia', 'Sportage', '111.211');
+        </sql>
+    </changeSet>
+    <changeSet id="16" author="ohrem25032002@gmail.com">
+        <sql>
+            INSERT INTO address_book (id, name, phone_number, street_address, city)
+            VALUES (1, 'Ohremchuk', '+375447714261', 'Yakuba Kolasa 28', 'Hrodno'),
+                   (2, 'Neymar', '+375447714231', ' WCup2022', 'Katar'),
+                   (3, 'Crish', '+32343532', 'WCup', 'Katar');
+        </sql>
+    </changeSet>
+    <changeSet id="17" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `hierarchy_test`.`company`
+            (
+                `id`   INTEGER AUTO_INCREMENT PRIMARY KEY,
+                `name` VARCHAR(64) NOT NULL UNIQUE
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="18" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `hierarchy_test`.`company_user`
+            (
+                `id`         INTEGER AUTO_INCREMENT PRIMARY KEY,
+                `firstname`  VARCHAR(128),
+                `lastname`   VARCHAR(128),
+                `birth_date` DATE,
+                `username`   VARCHAR(128) UNIQUE,
+                `role`       VARCHAR(32),
+                `company_id` INTEGER(128) REFERENCES company (id)
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="19" author="ohrem25032002@gmail.com">
+        <sql>
+            INSERT INTO company (id, name)
+            VALUES (1, 'Google'),
+                   (2, 'Facebook'),
+                   (3, 'Twitter'),
+                   (4, 'Amazon');
+        </sql>
+    </changeSet>
+    <changeSet id="20" author="ohrem25032002@gmail.com">
+        <sql>
+            INSERT INTO company_user(firstname, lastname, birth_date, username, role, company_id)
+            VALUES ('Sasha', 'Kudraveq', '2001-11-10', 'sasha_zander@mail.ru', 'ADMIN', 1),
+                   ('Gleb', 'Chebishev', '1998-03-11', 'gleb_pike@gmail.com', 'USER', 2),
+                   ('Yaroslav', 'Petrovski', '2001-03-03', 'yaroslav_perch@mail.ru', 'USER', 1),
+                   ('Vladimir', 'Ohremchuk', '1076-05-14', 'vova_kit@mail.ru', 'ADMIN', 3),
+                   ('IST1NA', 'Milik', '2004-12-10', 'milik_brother@extendsRoman.bsuir.by', 'ADMIN', 4);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
