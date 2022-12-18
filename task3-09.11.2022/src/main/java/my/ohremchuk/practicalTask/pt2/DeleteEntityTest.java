@@ -7,7 +7,7 @@ public class DeleteEntityTest {
 
     public static void main(String[] args) {
         UserDaoDeleteImpl targetObject = new UserDaoDeleteImpl();
-//        targetObject.deleteByHQL(Role.TROLLER);
+        targetObject.deleteByHQL(Role.TROLLER);
 
 //        targetObject.create();
 
