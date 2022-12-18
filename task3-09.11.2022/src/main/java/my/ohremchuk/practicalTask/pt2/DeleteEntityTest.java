@@ -10,7 +10,7 @@ public class DeleteEntityTest {
         targetObject.deleteByHQL(Role.TROLLER);
 
 //        targetObject.create();
-
+//
         User user = targetObject.find(14L);
         targetObject.delete(user);
 
