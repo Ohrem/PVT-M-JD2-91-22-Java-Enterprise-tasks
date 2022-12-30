@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <user id="101" name="Roman" surname="Ohremchuk"
+          email="ohrem25032002@gmail.com" password="1111"
+          phone="+375447714261" balance="1000" role="ADMIN"/>
+    <user id="102" name="Natasha" surname="Romanov"
+          email="nat@gmail.com" password="1234"
+          phone="+37531234123" balance="1300" role="USER"/>
+    <user id="103" name="Slava" surname="Urganov"
+          email="slavka@gmail.com" password="12345678"
+          phone="+3751234123" balance="300" role="ADMIN"/>
+</dataset>
