@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- Template Definition -->
+    <definition name="template-def"
+                template="/WEB-INF/views/pages/set/setter.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/views/pages/templates/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/pages/templates/main.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/views/pages/templates/footer.jsp" />
+    </definition>
+
+    <!-- Main Page -->
+    <definition name="home" extends="template-def">
+        <put-attribute name="title" value="Welcome" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/first.jsp" />
+    </definition>
+
+    <!-- SpringMVC Page -->
+    <definition name="springmvc" extends="template-def">
+        <put-attribute name="title" value="SpringMVC" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/second.jsp" />
+    </definition>
+
+    <!-- Apache Tiles Page -->
+    <definition name="tiles" extends="template-def">
+        <put-attribute name="title" value="ApacheTiles" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/third.jsp" />
+    </definition>
+
+
+</tiles-definitions>
